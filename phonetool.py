@@ -96,7 +96,7 @@ class PhoneTool(QtGui.QMainWindow, Ui_PhoneTool):
        	def mdk(self):
        	
        		self.countdown = self.countdown + 1
-       		if (self.countdown > 10):
+       		if (self.countdown > 240):
        			sys.exit()
        	
        	#Function executes when the user changes the cell value, and immediately disconnects the cell changed signal
