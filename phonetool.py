@@ -271,6 +271,9 @@ class AddEntry(QtGui.QDialog,Ui_Add):
 		QtCore.QObject.connect(self.AddBut, QtCore.SIGNAL("clicked()"), self.add)  
 		QtCore.QObject.connect(self.Update, QtCore.SIGNAL("clicked()"), self.update)  
 		QtCore.QObject.connect(self.Delete, QtCore.SIGNAL("clicked()"), self.delete)
+		
+		#location of the SQLite database to connect to
+		self.dbloc = './names.db'
 
 	def add(self):
 
@@ -332,7 +335,7 @@ class AddEntry(QtGui.QDialog,Ui_Add):
 			msg = """Please enter a first and last name!"""
        			QtGui.QMessageBox.about(self, "Hold on!", msg.strip())
        		else:
-	       		db = sqlite3.connect('names.db')
+	       		db = sqlite3.connect(self.dbloc)
 	       		cursor = db.cursor()		
 			cursor.execute("DELETE FROM names WHERE name=?", (name,))
 			db.commit()
